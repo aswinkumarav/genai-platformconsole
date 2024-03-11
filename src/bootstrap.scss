@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+// Define variables that will be later on the overrides here
+$human-blue: #5876aa;
+$smart-blue: #0079a1;
+$dark-gray: #404041;
+$sky-blue: #0056b3;
+// $smart-navy: #000b28;
+// $dynamic-red: #d0372a;
+$delighful-yellow: #eba73e;
+$body-bg-color: #ECF0F3;
+
+// Include any custom colors this will be used by bootstrap color utilities, so you can do
+// <button class="btn btn-accent">, and use variables such as var(--bs-accent)
+$custom-colors: (
+  accent: $human-blue,
+  secondary-blue: $sky-blue,
+);
+
+// We are importing bootstrap by parts, that way we can override any styles
+// before it compiles. This file must be structured the same way as the official
+// one located at node_modules/bootstrap/scss/bootstrap.scss
+@import "../node_modules/bootstrap/scss/mixins/banner";
+@include bsBanner("");
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$blue: $smart-blue;
+$yellow: $delighful-yellow;
+$secondary: $dark-gray;
+$body-bg: $body-bg-color;
+
+$font-family-base: "Roboto", sans-serif;
+
+$input-btn-font-size: 0.875rem;
+
+// Side menu links
+$navbar-light-color: $secondary;
+$navbar-light-hover-color: $blue;
+$navbar-light-active-color: $blue;
+// Dropdowns
+$enable-caret: false;
+$dropdown-box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+$dropdown-border-color: var(--bs-gray-300);
+// Accordions
+$accordion-icon-width: 14px;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// 5. Include remainder of required parts
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/dropdown";
+@import "../node_modules/bootstrap/scss/button-group";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/card";
+@import "../node_modules/bootstrap/scss/accordion";
+@import "../node_modules/bootstrap/scss/breadcrumb";
+@import "../node_modules/bootstrap/scss/pagination";
+@import "../node_modules/bootstrap/scss/badge";
+@import "../node_modules/bootstrap/scss/alert";
+@import "../node_modules/bootstrap/scss/progress";
+@import "../node_modules/bootstrap/scss/list-group";
+@import "../node_modules/bootstrap/scss/close";
+@import "../node_modules/bootstrap/scss/toasts";
+@import "../node_modules/bootstrap/scss/modal";
+@import "../node_modules/bootstrap/scss/tooltip";
+@import "../node_modules/bootstrap/scss/popover";
+@import "../node_modules/bootstrap/scss/carousel";
+@import "../node_modules/bootstrap/scss/spinners";
+@import "../node_modules/bootstrap/scss/offcanvas";
+@import "../node_modules/bootstrap/scss/placeholders";
+@import "../node_modules/bootstrap/scss/helpers";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// 8.Some Bootstrap utilities generate classes that cannot be overriden at compile time.
+// Such overrides, as well as Global styles should go here.
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+
+  --bs-content-padding-x: 1.88rem;
+  --bs-content-padding-y: 0.88rem;
+  // Prefix all custom variables with --bs, to avoid confusion between bootstrap variables.
+  --bs-btn-secondary-hover: #ebebec;
+
+  --qlik-card-border-color: #dfdfdf;
+  --qlik-card-border-radius: 5px;
+  --qlik-card-box-shadow: 2px 2px 10px #949494;
+}
+
+body{
+  font-family: $font-family-base !important;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 6px;
+  // background: #121b2c;
+  // height: 20px !important;
+}
+
+::-webkit-scrollbar-track {
+  // box-shadow: inset 0 0 5px #fff;
+  border-radius: 10px;
+  background: #5876aa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A4068;
+  // background: var(--bs-accent);
+  // height: 40px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2A4068;
+  // background: var(--bs-accent);
+}
+
+::-moz-scrollbar {
+  width: 5px;
+  height: 6px;
+}
+
+::-moz-scrollbar-track {
+  box-shadow: inset 0 0 5px #fff;
+  border-radius: 10px;
+}
+
+::-moz-scrollbar-thumb {
+  background: var(--bs-accent);
+  border-radius: 10px;
+}
+
+::-moz-scrollbar-thumb:hover {
+  background: var(--bs-accent);
+}
+
+.scrollbar-track.fade {
+  opacity: 1 !important;
+}
+
+iframe {
+  position: absolute;
+  inset: 0;
+  border: none;
+}
+
+.dropdown-menu {
+  box-shadow: $dropdown-box-shadow;
+}
+
+.btn.btn-secondary {
+  color: $secondary;
+  background: $white;
+  &:hover {
+    color: $secondary;
+    background: var(--bs-btn-secondary-hover);
+  }
+}
+
+.lui-dialog-container{
+  display: none;
+}
+
+// Override Eco feedback button size and position
+// #ecoFloaters > button {
+//removed everything as per new design 18/10/2022
+// left: -16px;
+// right: unset !important;
+// transform: rotate(180deg) scale(90%);
+// }
+
+.card{
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #DFDFDF;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 10px #949494;
+}
+
+.card-text {
+  color: #404041 !important;
+  font-size: 18px;
+  font-weight: 800;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.2px;
+}
+
+.card-title {
+  color: #404041 !important;
+  font-size: 16px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 400;
+}

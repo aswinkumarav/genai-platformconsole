@@ -1,0 +1,90 @@
+.searchInput {
+    border-radius: 4px;
+    border: 1px solid #5876aa;
+    outline-color: #5876aa;
+    padding-left: 7px;
+    color: #535353;
+}
+
+.searchInput:hover {
+    background-color: #f1f6ff;
+}
+
+.tableContainer {
+    // margin: 0px 30px;
+    height: 60vh;
+    overflow: auto;
+}
+
+.customPagination {
+    bottom: 1rem;
+    position: fixed;
+    right: 4rem;
+}
+
+.useCaseTable td {
+    // width: 154px;
+}
+
+.w105{
+    width: 105px;
+}
+
+.w200{
+    width: 200px;
+}
+
+.w115{
+    width: 115px;
+}
+
+.w155{
+    width: 155px;
+}
+
+.w185{
+    width: 185px;
+}
+
+.textElipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 155px;
+}
+
+.useCaseTable th {
+    background: #5876aa;
+    color: #fff;
+}
+
+.useCaseTable > tbody > tr:nth-of-type(odd) > * {
+    background-color: #f1f6ff;
+}
+
+.createNewBtn {
+    position: fixed;
+    right: 4rem;
+}
+
+.searchContainer {
+    position: fixed;
+    right: 12rem;
+}
+
+.createBtn {
+    border-radius: 4px;
+    border: 1px solid #5876aa;
+    outline: none;
+    background: #fff;
+    color: #535353;
+}
+
+.createBtn:hover {
+    background-color: #f1f6ff;
+}
+
+.actionIcon {
+    cursor: pointer;
+    margin-left: 8px;
+}

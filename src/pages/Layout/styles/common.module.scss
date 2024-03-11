@@ -1,0 +1,117 @@
+.headerMenu {
+  background: #5876aa;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #c5c5c5;
+}
+
+
+.headerItems {
+  right: 0;
+  position: fixed;
+  margin: 0px 22px 0px 0px;
+  font-size: 35px;
+  cursor: pointer;
+  font-size: 1.4rem !important;
+}
+
+.headerIcon {
+  margin-left: 12px;
+  color: white;
+  font-size: 23px;
+}
+
+.portalName {
+  font-size: 21px !important;
+  font-weight: 500;
+  margin-left: 14px;
+  color: #fff;
+}
+
+.landingPageCard {
+  min-height: 75vh;
+  margin-bottom: 20px;
+}
+
+.landingPageChildCard {
+  min-height: 13vh;
+  border: 1px solid #ebebeb !important;
+}
+
+.cardBodyTile {
+  font-weight: 500;
+  padding-left: 18px;
+}
+
+.chatBoxContainer {
+  background-color: #5876aa;
+  color: #ffffff;
+  padding: 10px;
+  display: flex;
+  height: 52px;
+  align-items: center
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #5876aa;
+}
+
+.container {
+  margin-top: 75px;
+  position: fixed;
+  width: 95.5%;
+  height: 80%;
+  padding: 2rem;
+  padding-top: 0.5rem !important;
+  margin-left: 2rem;
+}
+
+.infoBtn {
+  padding: 0;
+  padding-left: 7px;
+  padding-bottom: 3px;
+  border: 0px;
+  outline: none;
+}
+
+.pageLoader {
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  color: #5876aa;
+  border-width: 3px !important;
+}
+
+.tableCenter {
+  left: 45%;
+  position: absolute;
+  top: 50%;
+}
+
+.dataNotFound {
+  margin-left: -6.5rem;
+  font-size: 14px;
+  color: #5e5e5e;
+}
+
+.alertBox {
+  height: auto;
+  width: auto;
+  margin-left: 38px;
+  margin-top: 5rem;
+  transition: 0.7s ease-in-out;
+}
+
+
+.alertIcon {
+  height: 22px;
+  width: 22px;
+  margin-right: 6px;
+  margin-bottom: 1px;
+}

@@ -1,0 +1,199 @@
+.card {
+    border: 1.5px solid #e0e0e0;
+    min-height: 70vh;
+    background: #fff;
+}
+
+.card:hover {
+    box-shadow: 0 0 16px 0 hsla(0,0%,86%,.9);
+}
+
+.leftCard {
+    margin-left: 2rem;
+    line-height: 3rem;
+}
+
+.rightCard {
+    margin: 2rem;
+}
+
+.checkmarkIcon {
+    padding-bottom: 3px;
+    width: 25px;
+    height: 25px;
+}
+
+.iconStyle {
+    margin-right: 12px;
+}
+
+.useCaseListHeight {
+    height: 3rem;
+}
+
+.listLine {
+    height: 32px;
+    border: 1px solid #a1a1a1;
+    width: 0px;
+    margin-left: 10px;
+}
+
+.useCaseLabel {
+    font-weight: 500;
+}
+
+.iconActive {
+    color: #5876aa;
+}
+
+.disableTickIcon {
+    --bs-form-select-bg-icon: none !important;
+}
+
+.disableBGImage {
+    background-image: none !important;
+}
+
+.nextBtn {
+    float: right;
+    margin-top: 3.4rem;
+    padding-bottom: 1rem;
+}
+
+.dropdownMenuStyle {
+    padding: 10px;
+    line-height: 30px;
+    width: 100%;
+    height: 12rem;
+    overflow-y: auto;
+}
+
+.dropdownOPtionLabel {
+    margin-left: 10px;
+    height: 33px;
+}
+
+.addNewBtn {
+    text-decoration-line: none;
+    float: right;
+    padding-right: 3px;
+}
+
+.previousPageBtn {
+    margin-right: 8px;
+    background: #f6f6f6;
+    color: #000;
+}
+
+.previousPageBtn:hover {
+    background: #f6f6f6;
+    color: #000;
+}
+
+.form-check-input:valid {
+    border-color: #000 !important;
+}
+
+.labelStyle > label {
+    color: #000 !important;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.btnLoader {
+    width: 16px;
+    height: 16px;
+    margin-right: 5px;
+}
+
+.usecaseHeader {
+    background: #5876aa;
+    padding: 5px;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    font-size: 20px;
+}
+
+.estimateBox {
+    margin-left: 2px;
+    padding: 13px;
+    border: 2.5px solid rgb(204 204 204 / 62%);
+    border-radius: 3px;
+    width: 18rem;
+    float: right;
+    margin-top: 8px;
+    box-shadow: 0 0 16px 0 hsla(0,0%,86%,.9);
+}
+
+.estimateBox:hover {
+    box-shadow: 0 0 16px 0 hsla(0,0%,86%,.5);
+}
+
+.estimatePrice {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    margin-bottom: 12px;
+}
+
+.estimateBreakUp {
+    font-size: 16px;
+    cursor: pointer;
+    color: #5876aa;
+    text-decoration: underline;
+    margin-left: 8.8rem;
+}
+
+.helpIcon {
+    margin-right: 4px;
+    margin-left: -8px;
+}
+
+.helpMeCard {
+    overflow: auto;
+    height: 70vh;
+}
+
+.helpMeSplitCard {
+    margin-right: -21px;
+}
+
+.helpMeSplitCol {
+    position: absolute;
+    right: 26px;
+    transition: transform 0.5s ease;
+    transform: translateX(115%);
+    height: 70vh;
+    overflow: auto;
+    overflow-x: hidden;
+    top: 62px;
+    min-width: 72%;
+}
+
+.backArr {
+    right: 10px;
+    position: fixed;
+    cursor: pointer;
+}
+
+.backArrIcon {
+    width: 28px;
+    height: 24px;
+    color: #0079a1;
+}
+
+.fieldMsg {
+    width: 25rem;
+    margin-top: 0.7rem;
+    color: #ff8c8c;
+    font-weight: 500;
+    font-size: 13px;
+}
