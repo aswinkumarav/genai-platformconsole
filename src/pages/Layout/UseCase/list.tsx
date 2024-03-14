@@ -111,7 +111,7 @@ function UseCaseList() {
     }
 
     const deleteUseCase = (id: string, useCaseId: number) => {
-        deleteData(id, useCaseId).then((res: any) => {
+        deleteData(id, useCaseId).then(() => {
 
         })
     }

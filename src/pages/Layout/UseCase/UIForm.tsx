@@ -8,7 +8,6 @@ import { addusecase, executeAPICalls } from '../../../api/api';
 import Spinner from "react-bootstrap/Spinner";
 import AlertBox from '../../../components/AlertBox';
 import { parseJson } from '../../../Service/CommonService';
-import BreakUpDetails from '../../../components/BreakUpDetails';
 
 
 function UIForm(prop: any) {
@@ -49,7 +48,7 @@ function UIForm(prop: any) {
     formData.ui = true;
     const reqData = parseJson.parseRequest(formData);
     Object.setPrototypeOf(reqData, null);
-    // executeAPICalls(formData.useCaseName, reqData);
+    
     addusecase(reqData).then((res) => {
       if (!res.ok) {
         setShowAlert(true)

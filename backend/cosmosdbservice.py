@@ -86,10 +86,10 @@ class CosmosQueryClient():
             return result
 
     def delete_query(self, id, use_case_id):
-        print(id, use_case_id)
-        query = self.container_client.read_item(item=id, partition_key=use_case_id)        
+        print(id, use_case_id, type(id), type(use_case_id))
+        query = self.container_client.read_item(item=id, partition_key=int(use_case_id))        
         if query:
-            resp = self.container_client.delete_item(item=id, partition_key=use_case_id)
+            resp = self.container_client.delete_item(item=id, partition_key=int(use_case_id))
             return resp
         else:
             return True

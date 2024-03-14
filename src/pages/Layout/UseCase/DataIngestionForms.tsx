@@ -159,16 +159,17 @@ function DataIngestionForms() {
                       placeholder="Folder Name"
                       name={`FOLDER-${i}`}
                       value={folder}
+                      disabled={formData.id ? true : false}
                       onChange={() => {handleInputFolder(event, i)}}
                       className={`${style.disableBGImage} mt-3`}
                       style={formData.folderName.indexOf(folder) >=0 && formData.folderName.indexOf(folder) != i ? { border: '1px solid #dc3545' } : {}}
                     />
-                    { formData.folderName.length > 1 && <span onClick={() => {removeFolder(i)}} style={{marginTop: '20px', marginLeft: '2px', cursor: 'pointer'}}><IoMdClose/></span> }
+                    { formData.folderName.length > 1 && !formData.id && <span onClick={() => {removeFolder(i)}} style={{marginTop: '20px', marginLeft: '2px', cursor: 'pointer'}}><IoMdClose/></span> }
                   </span>
                 </>
               ))}
             </span>
-            { formData.folderName && formData.folderName.length < 5 && <Button variant="link" onClick={() => {handleInputFolder(event, -1)}} className={style.addNewBtn}>+ Add New</Button> }
+            { formData.folderName && formData.folderName.length < 5 && !formData.id && <Button variant="link" onClick={() => {handleInputFolder(event, -1)}} className={style.addNewBtn}>+ Add New</Button> }
           
           </Form.Group>
           

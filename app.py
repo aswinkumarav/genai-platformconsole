@@ -112,32 +112,25 @@ async def deleteUseCase(id, use_case_id):
         logging.exception("Exception in /usecases/delete")
         return {"error": str(e)}
 
-@app.post("/createStorageCont")
+@app.post("/createStorageContainer")
 async def createStorageContainer(useCaseName: dict):
-    print("testt")
-    print(useCaseName)
-    print("https://" + os.environ["StorageAccountName"] + ".blob.core.windows.net")
-    print(os.environ["StorageAccountKey"])
     blob_service_client = BlobServiceClient(
         account_url="https://" + os.environ["StorageAccountName"] + ".blob.core.windows.net",
         credential=os.environ["StorageAccountKey"],
     )
-    container_client = blob_service_client.get_container_client(
-        container=useCaseName['useCaseName']
-    )
     try:
-        await container_client.create_container()
-        return 'Storage Container Created!'
+        await blob_service_client.create_container(name=useCaseName['useCaseName'].lower())
+        return {'Message : ','Storage Container Created!'}
     except Exception as e:
-        return e
+        return {'Exception':e}
     
 @app.post("/createCosmosDbContainer")
-async def createCosmosContainer(useCaseName: str):
+async def createCosmosContainer(useCaseName: dict):
     client = CosmosClient(os.environ["CosmosURL"], os.environ["CosmosAPIKey"])
     database = client.get_database_client(os.environ["CosmosDataBaseName"])
     try:
         await database.create_container(
-           id=useCaseName,
+           id=useCaseName['useCaseName'].lower(),
            partition_key=PartitionKey(path=os.environ["CosmosContainerPartitionKey"]),
            default_ttl=200
         )
@@ -146,7 +139,7 @@ async def createCosmosContainer(useCaseName: str):
         return e
 
 @app.post("/createSearchServiceIndex")
-async def createSearchServiceIndex(useCaseName: str):
+async def createSearchServiceIndex(useCaseName: dict):
     url = f"https://{os.environ['AISearchServiceName']}.search.windows.net/indexes?api-version=2023-10-01-preview"
     Headers = {
         'Content-Type': 'application/json',
@@ -154,7 +147,7 @@ async def createSearchServiceIndex(useCaseName: str):
         'Accept':'application/json'
         }
     body = {
-        "name": useCaseName,
+        "name": useCaseName['useCaseName'].lower(),
         "fields": [
             {"name": "id", "type": "Edm.String", "searchable": "false","filterable": "true","retrievable": "true","sortable": "false","facetable": "false","key": "true","synonymMaps": []},
             {"name": "Keywords", "type": "Edm.String", "searchable": "true", "filterable": "false", "retrievable": "true", "sortable": "false", "facetable": "false", "key": "false", "analyzer": "standard.lucene", "synonymMaps": [] },
@@ -218,8 +211,8 @@ async def createSearchServiceIndex(useCaseName: str):
         async with aiohttp.ClientSession() as session:
             async with session.post(url=url, headers=Headers, json=body) as res:
                 status_code = res.status
-                if status_code == 200:
-                    return 'Search Index Created!'
+                if status_code == 200 or status_code == 201:
+                    return {'Message':'Search Index Created!'}
                 else:
                     text = await res.text()
                     return {'Status':status_code ,'Message':text}             
@@ -265,7 +258,7 @@ async def createLogicAppWorkflow(useCaseDetailsDict: dict):
 
     subscriptionId = os.environ["SubscriptionId"]
     resourceGroupName = os.environ["ResourceGroupName"]
-    workflowName = useCaseDetailsDict['useCaseDetails']['Name']
+    workflowName = useCaseDetailsDict['UseCaseDetails']['UseCaseName']
     url = f"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}?api-version=2016-06-01"
    
     Headers = {

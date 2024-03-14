@@ -128,11 +128,19 @@ export const service = {
           "NextTaskPositon": "0",
           "UseCaseName": req.useCaseName,
         },
-        SourceSync: {
+        FileFinder: {
           "dataSource": req.dataSource,
           "dataSourceUrl": req.dataSourceUrl,
           "FolderName": req.folderName,
           "CommonPrefix": ""
+        },
+        SourceSync: {
+          "dataSource": req.dataSource,
+          "dataSourceUrl": req.dataSourceUrl,
+          "FolderName": req.folderName,
+          "CommonPrefix": "",
+          "SharePointPath":"",
+          "action": ""
         },
         DocParser: {
           "FileType": req.fileTypes,

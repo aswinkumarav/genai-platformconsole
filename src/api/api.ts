@@ -3,7 +3,7 @@ export const getList = async (page: number): Promise<Response | null> => {
         method: "GET",
     }).then((res) => {
         return res.json()
-    }).catch((err) => {
+    }).catch(() => {
         console.error("There was an issue fetching your data.");
         return null
     })
@@ -23,7 +23,7 @@ export const deleteData = async(id: string, useCaseId: number): Promise<Response
     }).then(async (res) => {
         return res
     })
-    .catch((err) => {
+    .catch(() => {
         console.error("There was an issue in delete data.");
         let errRes: Response = {
             ...new Response,
@@ -48,7 +48,7 @@ export const addusecase = async (messages: any): Promise<Response> => {
     }).then(async (res) => {
         return res
     })
-    .catch((err) => {
+    .catch(() => {
         console.error("There was an issue in save data.");
         let errRes: Response = {
             ...new Response,
@@ -61,7 +61,7 @@ export const addusecase = async (messages: any): Promise<Response> => {
 }
 
 // Function to make API calls
-async function makeAPICall(endpoint: any, state: any) {
+async function makeAPICall(endpoint: any) {
     try {
         const json = endpoint.body ? endpoint.body : '';
         const response = await fetch(endpoint.url, {
@@ -87,51 +87,54 @@ async function makeAPICall(endpoint: any, state: any) {
 }
 
 // Function to handle retry logic
-async function retryFailedAPICall(endpoint: any, state:any) {
-    state.retryInProgress = true;
-    while (state.retryCount < state.maxRetries && !state.success) {
-        try {
-            await makeAPICall(endpoint, state);
-            state.success = true;
-        } catch (error) {
-            state.retryCount++;
-            console.log(`Retry attempt ${state.retryCount} for ${endpoint.url}`);
-        }
-    }
+// async function retryFailedAPICall(endpoint: any, state:any) {
+//     state.retryInProgress = true;
+//     while (state.retryCount < state.maxRetries && !state.success) {
+//         try {
+//             await makeAPICall(endpoint, state);
+//             state.success = true;
+//         } catch (error) {
+//             state.retryCount++;
+//             console.log(`Retry attempt ${state.retryCount} for ${endpoint.url}`);
+//         }
+//     }
 
-    if (!state.success) {
-        console.log(`Failed to call ${endpoint.url} after ${state.maxRetries} attempts`);
-    }
-}
+//     if (!state.success) {
+//         console.log(`Failed to call ${endpoint.url} after ${state.maxRetries} attempts`);
+//     }
+// }
 
 // Main function to execute API calls
 export async function executeAPICalls(useCaseName: string, reqData: any) {
-    const accountName = 'nucleusdifaimlstg';
-    const partitionKey = '/userId';
     const containerName = useCaseName;
-    const dbName = 'genai_dif_platform';
     delete reqData.Frontend;
     console.log(reqData);
     const apiEndpoints = [
         {
-            url: `http://localhost:8000/createStorageCont`,
+            url: `http://localhost:8000/createStorageContainer`,
             body: JSON.stringify({useCaseName: containerName})
         },
-        // {url: `http://localhost:8000/createCosmosDbContainer?useCaseName=${containerName}`},
-        // {url: `http://localhost:8000/createSearchServiceIndex?useCaseName=${containerName}`},
-        // {
-        //     url: `http://localhost:8000/createLogicAppWorkflow`,
-        //     reqData
-        // },
+        {
+            url: `http://localhost:8000/createCosmosDbContainer`,
+            body: JSON.stringify({useCaseName: containerName})
+        },
+        {
+            url: `http://localhost:8000/createSearchServiceIndex`,
+            body: JSON.stringify({useCaseName: containerName})
+        },
+        {
+            url: `http://localhost:8000/createLogicAppWorkflow`,
+            body: JSON.stringify(reqData)
+        },
     ];
     for (const endpoint of apiEndpoints) {
-        const state = {
-            retryCount: 0,
-            maxRetries: 3,
-            success: false,
-            retryInProgress: false
-        }
+        // const state = {
+        //     retryCount: 0,
+        //     maxRetries: 3,
+        //     success: false,
+        //     retryInProgress: false
+        // }
         // await makeAPICall(endpoint, state);
-        makeAPICall(endpoint, state);
+        makeAPICall(endpoint);
     }
 }

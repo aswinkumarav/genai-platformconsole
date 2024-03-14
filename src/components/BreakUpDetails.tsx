@@ -6,10 +6,10 @@ import { service } from "../Service/CommonService";
 import { formContext } from "../pages/Layout/UseCase/list";
 
 
-function BreakUpDetails(props: any) {
+function BreakUpDetails() {
     const [ splitType, setSplitType ] = useState('oneTime');
     const [ estimateCost, setEstimateCost ] = useState<any>({});
-    const { formData, setFormData } = useContext(formContext);
+    const { formData } = useContext(formContext);
 
     const viewBreakUp = (flag: boolean) => {
         const helpMeSplitColTag = document.getElementsByClassName('card2');
